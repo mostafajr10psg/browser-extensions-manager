@@ -364,11 +364,3 @@ body.light-mode .box .extension-control .active:hover {
 }
 /* Light Mode */
 
-.active-all {
-  border: none;
-  padding: 8px;
-  border-radius: 7px;
-  background-color: var(--red-400);
-  cursor: pointer;
-  transform: translateY(40px);
-}
