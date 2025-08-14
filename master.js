@@ -7,19 +7,7 @@ const extensionsName = document.querySelectorAll(".box .name");
 const extensionsDesc = document.querySelectorAll(".box .desc");
 const removeBtn = document.querySelectorAll(".box .remove-btn");
 const activeBtn = document.querySelectorAll(".box .active-btn");
-const activeBtnActivation =
-  document.getElementsByClassName("active-btn active");
-
-const activeAll = document.querySelector(".active-all");
-
-activeAll.onclick = () => {
-  activeAll.classList.toggle("active");
-  if (activeAll.classList.contains("active")) {
-    activeBtn.forEach((btn) => btn.classList.add("active"));
-  } else {
-    activeBtn.forEach((btn) => btn.classList.remove("active"));
-  }
-};
+const activeBtnActivation = document.getElementsByClassName("active-btn active");
 
 // Get Extensions Data
 fetch("data.json")
