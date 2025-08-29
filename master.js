@@ -1,4 +1,7 @@
+const body = document.body;
 const themeIcon = document.querySelector(".theme-icon");
+const logoImgLight = document.querySelector(".logo .logo-light");
+const logoImgDark = document.querySelector(".logo .logo-dark");
 const extensionsList = document.querySelectorAll(".extensions-list button");
 const emptyExtensionsMsg = document.querySelector(".empty-extensions-msg");
 const extensions = document.getElementsByClassName("extension");
@@ -25,9 +28,22 @@ fetch("data.json")
     }
   });
 
-themeIcon.addEventListener("click", () =>
-  document.body.classList.toggle("light-mode")
-);
+setTimeout(() => {
+  for (let e of extensions)
+    e.style.cssText = `opacity: 1; transform: translateY(0)`;
+}, 150);
+
+themeIcon.addEventListener("click", () => {
+  body.classList.toggle("light-mode");
+
+  if (body.classList.contains("light-mode")) {
+    logoImgLight.classList.remove("hidden");
+    logoImgDark.classList.add("hidden");
+  } else {
+    logoImgDark.classList.remove("hidden");
+    logoImgLight.classList.add("hidden");
+  }
+});
 
 function showAndChangeEmptyMsg(newText) {
   emptyExtensionsMsg.classList.remove("hidden");
@@ -46,6 +62,7 @@ function filterExtensions(statusExtensions) {
 removeBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.target.closest(".extension").remove();
+
     extensionsList.forEach((e) => {
       if (
         e.classList.contains("activation") &&
@@ -59,6 +76,10 @@ removeBtns.forEach((btn) => {
         runBtnsNotActive.length === 0
       ) {
         showAndChangeEmptyMsg("No Inactive Extensions");
+      } else {
+        extensions.length === 0
+          ? showAndChangeEmptyMsg("No Extensions Yet")
+          : "";
       }
     });
   });

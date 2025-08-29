@@ -84,7 +84,7 @@ header {
 }
 
 @media (max-width: 767px) {
-  header .logo {
+  header .logo img {
     width: 16rem;
   }
 }
@@ -200,6 +200,8 @@ header {
   border-radius: var(--b-rad-20);
   border: 1px solid var(--neutral-600);
   padding: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .extensions .extension-info {
